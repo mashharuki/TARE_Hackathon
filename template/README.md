@@ -117,6 +117,3 @@ To get started building your own frame, follow these steps:
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-
-## 参考文献
-- [提出フォーム](larkoffice.com/share/base/form/shrcnqqZnISjwp0JQh1f4qmD05b?share_link_type=qrcode&ccm_open_type=form_qrcode)
