@@ -1,28 +1,146 @@
-/* アプリ共通のグローバル CSS */
+/* アプリ共通のグローバル CSS - サイファーパンクテーマ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Light モードの基調色 */
+/* サイファーパンクテーマのインポート */
+@import './theme.css';
+
+/* サイファーパンクカラーパレット */
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
+  --background: #0a0a0a;
+  --foreground: #00ffff;
+  --cyberpunk-primary: #00ffff;
+  --cyberpunk-secondary: #39ff14;
+  --cyberpunk-accent: #ff1493;
+  --cyberpunk-warning: #ffff00;
 }
 
-/* OS 設定がダークモードのとき */
-@media (prefers-color-scheme: dark) {
+/* OS 設定に関係なくサイファーパンクテーマを適用 */
+@media (prefers-color-scheme: dark), (prefers-color-scheme: light) {
   :root {
-    --background: #111111;
-    --foreground: #ffffff;
+    --background: #0a0a0a;
+    --foreground: #00ffff;
   }
 }
 
+/* ベースボディスタイル */
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: 'Geist', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 80%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 回路基板風背景パターン */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(57, 255, 20, 0.03) 0%, transparent 50%),
+    linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.02) 100%),
+    linear-gradient(0deg, transparent 98%, rgba(57, 255, 20, 0.02) 100%);
+  background-size: 200px 200px, 300px 300px, 250px 250px, 50px 50px, 50px 50px;
+  pointer-events: none;
+  z-index: -2;
+  animation: cyberpunk-bg-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes cyberpunk-bg-pulse {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* スキャンライン効果 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.01) 2px,
+    rgba(0, 255, 255, 0.01) 4px
+  );
+  pointer-events: none;
+  z-index: -1;
+  animation: cyberpunk-scanlines 0.1s linear infinite;
+}
+
+@keyframes cyberpunk-scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* グローバルテキストスタイル */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--cyberpunk-primary);
+  text-shadow: 0 0 10px var(--cyberpunk-primary);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* リンクスタイル */
+a {
+  color: var(--cyberpunk-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px var(--cyberpunk-secondary);
+}
+
+a:hover {
+  color: var(--cyberpunk-accent);
+  text-shadow: 0 0 10px var(--cyberpunk-accent);
+}
+
+/* スクロールバーのカスタマイズ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyberpunk-primary);
+  border-radius: 4px;
+  box-shadow: 0 0 5px var(--cyberpunk-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyberpunk-secondary);
+  box-shadow: 0 0 10px var(--cyberpunk-secondary);
+}
+
+/* セレクションスタイル */
+::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #ffffff;
 }

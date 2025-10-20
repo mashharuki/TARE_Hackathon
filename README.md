@@ -118,5 +118,11 @@ To get started building your own frame, follow these steps:
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
+## デプロイしたコントラクト (Base Sepolia)
+
+GameToken: 0xd9145CCE52D386f254917e481eB44e9943F39138
+
+PokerGame: 0xd9145CCE52D386f254917e481eB44e9943F39138
+
 ## 参考文献
 - [提出フォーム](larkoffice.com/share/base/form/shrcnqqZnISjwp0JQh1f4qmD05b?share_link_type=qrcode&ccm_open_type=form_qrcode)

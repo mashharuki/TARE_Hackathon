@@ -14,42 +14,42 @@ export default function GameRules({ className = '' }: GameRulesProps) {
    * ポーカーハンドの例を表示するコンポーネント
    */
   const HandExample = ({ cards, description }: { cards: string[]; description: string }) => (
-    <div className="flex flex-col space-y-3 p-3 bg-gray-50 rounded-lg">
+    <div className="flex flex-col space-y-3 p-3 cyber-panel cyber-border rounded-lg">
       <div className="flex space-x-1 justify-center overflow-x-auto">
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`w-10 h-12 sm:w-12 sm:h-16 rounded border-2 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0 ${
+            className={`w-10 h-12 sm:w-12 sm:h-16 rounded cyber-border-glow flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0 cyber-bg ${
               card.includes('♥') || card.includes('♦')
-                ? 'border-red-300 bg-white text-red-600'
-                : 'border-gray-300 bg-white text-gray-800'
+                ? 'cyber-text-danger cyber-glow'
+                : 'cyber-text-primary'
             }`}
           >
             {card}
           </div>
         ))}
       </div>
-      <p className="text-xs sm:text-sm text-gray-700 text-center leading-relaxed">{description}</p>
+      <p className="text-xs sm:text-sm cyber-text-secondary text-center leading-relaxed">{description}</p>
     </div>
   );
 
   return (
-    <div className={`max-w-4xl mx-auto p-2 sm:p-6 ${className}`}>
+    <div className={`max-w-4xl mx-auto p-2 sm:p-6 cyber-bg cyber-scanlines ${className}`}>
       {/* ヘッダー */}
-      <div className="text-center mb-3 sm:mb-8">
-        <h1 className="text-lg sm:text-3xl font-bold text-gray-800 mb-2 px-2">ポーカーゲームの遊び方</h1>
-        <p className="text-sm sm:text-base text-gray-600 px-2">5カードドローポーカーのルールと遊び方を説明します</p>
+      <div className="text-center mb-3 sm:mb-8 cyber-panel cyber-border-glow p-4 rounded-lg">
+        <h1 className="text-lg sm:text-3xl font-bold cyber-text-primary cyber-glow mb-2 px-2 cyber-glitch">ポーカーゲームの遊び方</h1>
+        <p className="text-sm sm:text-base cyber-text-secondary px-2">5カードドローポーカーのルールと遊び方を説明します</p>
       </div>
 
       {/* タブナビゲーション */}
-      <div className="bg-white rounded-lg shadow-md mb-3 sm:mb-6 mx-1 sm:mx-0">
-        <div className="flex border-b overflow-x-auto">
+      <div className="cyber-panel cyber-border-glow rounded-lg mb-3 sm:mb-6 mx-1 sm:mx-0">
+        <div className="flex cyber-border-b overflow-x-auto">
           <button
             onClick={() => setActiveTab('basic')}
             className={`flex-shrink-0 px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors min-h-[48px] touch-manipulation ${
               activeTab === 'basic'
-                ? 'bg-blue-500 text-white border-b-2 border-blue-500'
-                : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50 active:bg-gray-100'
+                ? 'cyber-button-active cyber-text-primary cyber-glow cyber-border-b-accent'
+                : 'cyber-text-secondary hover:cyber-text-primary hover:cyber-glow-hover'
             }`}
           >
             基本ルール
@@ -58,8 +58,8 @@ export default function GameRules({ className = '' }: GameRulesProps) {
             onClick={() => setActiveTab('hands')}
             className={`flex-shrink-0 px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors min-h-[48px] touch-manipulation ${
               activeTab === 'hands'
-                ? 'bg-blue-500 text-white border-b-2 border-blue-500'
-                : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50 active:bg-gray-100'
+                ? 'cyber-button-active cyber-text-primary cyber-glow cyber-border-b-accent'
+                : 'cyber-text-secondary hover:cyber-text-primary hover:cyber-glow-hover'
             }`}
           >
             ポーカーハンド
@@ -68,8 +68,8 @@ export default function GameRules({ className = '' }: GameRulesProps) {
             onClick={() => setActiveTab('betting')}
             className={`flex-shrink-0 px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors min-h-[48px] touch-manipulation ${
               activeTab === 'betting'
-                ? 'bg-blue-500 text-white border-b-2 border-blue-500'
-                : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50 active:bg-gray-100'
+                ? 'cyber-button-active cyber-text-primary cyber-glow cyber-border-b-accent'
+                : 'cyber-text-secondary hover:cyber-text-primary hover:cyber-glow-hover'
             }`}
           >
             ベットシステム

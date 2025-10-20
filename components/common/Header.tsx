@@ -32,19 +32,19 @@ export const Header = () => {
           variant="ghost"
           size="sm"
           onClick={handleAddFrame}
-          className="p-2 sm:p-4 text-xs sm:text-sm text-[var(--app-accent)] min-h-8 sm:min-h-auto"
-          icon={<Icon name="plus" size="sm" />}
+          className="p-2 sm:p-4 text-xs sm:text-sm cyber-button-accent cyber-glow min-h-8 sm:min-h-auto"
+          icon={<Icon name="plus" size="sm" className="cyber-text-accent" />}
         >
-          <span className="hidden sm:inline">Save Frame</span>
-          <span className="sm:hidden">Save</span>
+          <span className="hidden sm:inline cyber-text-accent">Save Frame</span>
+          <span className="sm:hidden cyber-text-accent">Save</span>
         </Button>
       );
     }
 
     if (frameAdded) {
       return (
-        <div className="flex animate-fade-out items-center space-x-1 text-xs sm:text-sm font-medium text-[#0052FF]">
-          <Icon name="check" size="sm" className="text-[#0052FF]" />
+        <div className="flex animate-fade-out items-center space-x-1 text-xs sm:text-sm font-medium cyber-text-success cyber-glow cyber-pulse">
+          <Icon name="check" size="sm" className="cyber-text-success" />
           <span>Saved</span>
         </div>
       );
@@ -54,21 +54,21 @@ export const Header = () => {
   }, [context, frameAdded, handleAddFrame]);
 
   return (
-    <header className="mb-2 sm:mb-4 flex min-h-10 sm:min-h-12 items-center justify-between px-2 sm:px-4 py-1 sm:py-2">
+    <header className="mb-2 sm:mb-4 flex min-h-10 sm:min-h-12 items-center justify-between px-2 sm:px-4 py-1 sm:py-2 cyber-panel cyber-border-glow">
       <div className="flex-1 min-w-0">
         <div className="flex items-center space-x-1 sm:space-x-2">
           <Wallet className="z-10">
-            <ConnectWallet className="text-xs sm:text-base px-2 sm:px-4 py-1 sm:py-2 min-h-8 sm:min-h-10">
-              <Name className="text-inherit truncate max-w-24 sm:max-w-none" />
+            <ConnectWallet className="text-xs sm:text-base px-2 sm:px-4 py-1 sm:py-2 min-h-8 sm:min-h-10 cyber-button cyber-text-primary">
+              <Name className="text-inherit truncate max-w-24 sm:max-w-none cyber-glow" />
             </ConnectWallet>
             <WalletDropdown>
-              <Identity className="px-2 sm:px-4 pb-2 pt-3" hasCopyAddressOnClick>
-                <Avatar className="w-6 h-6 sm:w-10 sm:h-10" />
-                <Name className="text-xs sm:text-base" />
-                <Address className="text-xs sm:text-sm" />
-                <EthBalance className="text-xs sm:text-sm" />
+              <Identity className="px-2 sm:px-4 pb-2 pt-3 cyber-panel" hasCopyAddressOnClick>
+                <Avatar className="w-6 h-6 sm:w-10 sm:h-10 cyber-border-glow" />
+                <Name className="text-xs sm:text-base cyber-text-primary" />
+                <Address className="text-xs sm:text-sm cyber-text-secondary" />
+                <EthBalance className="text-xs sm:text-sm cyber-text-accent" />
               </Identity>
-              <WalletDropdownDisconnect className="text-xs sm:text-sm" />
+              <WalletDropdownDisconnect className="text-xs sm:text-sm cyber-button-secondary" />
             </WalletDropdown>
           </Wallet>
         </div>

@@ -1,140 +1,292 @@
-/* Mini App 専用テーマ変数（OnchainKit 変数も上書き） */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+/* サイファーパンクテーマ - カラーパレット、フォント、エフェクト定義 */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Light モードのテーマ変数 */
+/* カスタムプロパティ（CSS変数）定義 */
 :root {
-  --app-background: #ffffff;
-  --app-foreground: #111111;
-  --app-foreground-muted: #58585c;
-  --app-accent: #0052ff;
-  --app-accent-hover: #0047e1;
-  --app-accent-active: #003db8;
-  --app-accent-light: #e6edff;
-  --app-gray: #f5f5f5;
-  --app-gray-dark: #e0e0e0;
-  --app-card-bg: rgba(255, 255, 255, 0.4);
-  --app-card-border: rgba(0, 0, 0, 0.1);
+  /* サイファーパンクカラーパレット */
+  --cyberpunk-black: #0a0a0a;
+  --cyberpunk-dark: #1a1a1a;
+  --cyberpunk-darker: #0f0f0f;
+  --cyberpunk-neon-blue: #00ffff;
+  --cyberpunk-neon-green: #39ff14;
+  --cyberpunk-neon-pink: #ff1493;
+  --cyberpunk-neon-yellow: #ffff00;
+  --cyberpunk-neon-purple: #bf00ff;
+  --cyberpunk-electric-blue: #0080ff;
+  --cyberpunk-matrix-green: #00ff41;
+  
+  /* グラデーション */
+  --cyberpunk-bg-gradient: linear-gradient(135deg, var(--cyberpunk-black) 0%, var(--cyberpunk-dark) 50%, var(--cyberpunk-darker) 100%);
+  --cyberpunk-card-gradient: linear-gradient(145deg, rgba(26, 26, 26, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
+  --cyberpunk-button-gradient: linear-gradient(45deg, var(--cyberpunk-neon-blue) 0%, var(--cyberpunk-electric-blue) 100%);
+  
+  /* シャドウとグロー */
+  --cyberpunk-glow-blue: 0 0 20px var(--cyberpunk-neon-blue), 0 0 40px var(--cyberpunk-neon-blue), 0 0 60px var(--cyberpunk-neon-blue);
+  --cyberpunk-glow-green: 0 0 20px var(--cyberpunk-neon-green), 0 0 40px var(--cyberpunk-neon-green);
+  --cyberpunk-glow-pink: 0 0 20px var(--cyberpunk-neon-pink), 0 0 40px var(--cyberpunk-neon-pink);
+  --cyberpunk-glow-yellow: 0 0 20px var(--cyberpunk-neon-yellow), 0 0 40px var(--cyberpunk-neon-yellow);
+  
+  /* ボーダーとアウトライン */
+  --cyberpunk-border-neon: 2px solid var(--cyberpunk-neon-blue);
+  --cyberpunk-border-green: 2px solid var(--cyberpunk-neon-green);
+  --cyberpunk-border-pink: 2px solid var(--cyberpunk-neon-pink);
+  
+  /* フォント */
+  --cyberpunk-font-mono: 'Courier New', 'Monaco', 'Menlo', monospace;
+  --cyberpunk-font-digital: 'Orbitron', 'Courier New', monospace;
 }
 
-/* ダークモードのテーマ変数 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --app-background: #111111;
-    --app-foreground: #ffffff;
-    --app-foreground-muted: #c8c8d1;
-    --app-accent: #0052ff;
-    --app-accent-hover: #0047e1;
-    --app-accent-active: #003db8;
-    --app-accent-light: #1e293b;
-    --app-gray: #1e1e1e;
-    --app-gray-dark: #2e2e2e;
-    --app-card-bg: rgba(17, 17, 17, 0.4);
-    --app-card-border: rgba(115, 115, 115, 0.5);
-  }
+/* サイファーパンクベースクラス */
+.cyberpunk-container {
+  background: var(--cyberpunk-bg-gradient);
+  color: var(--cyberpunk-neon-blue);
+  font-family: var(--cyberpunk-font-mono);
+  position: relative;
+  overflow: hidden;
 }
 
-.mini-app-theme {
-  --ock-font-family: 'Geist', sans-serif;
-  --ock-border-radius: 0.75rem;
-  --ock-border-radius-inner: 0.5rem;
-
-  /* テキスト色 */
-  --ock-text-inverse: var(--app-background);
-  --ock-text-foreground: var(--app-foreground);
-  --ock-text-foreground-muted: var(--app-foreground-muted);
-  --ock-text-error: #ef4444;
-  --ock-text-primary: var(--app-accent);
-  --ock-text-success: #22c55e;
-  --ock-text-warning: #f59e0b;
-  --ock-text-disabled: #a1a1aa;
-
-  /* 背景色 */
-  --ock-bg-default: var(--app-background);
-  --ock-bg-default-hover: var(--app-gray);
-  --ock-bg-default-active: var(--app-gray-dark);
-  --ock-bg-alternate: var(--app-gray);
-  --ock-bg-alternate-hover: var(--app-gray-dark);
-  --ock-bg-alternate-active: var(--app-gray-dark);
-  --ock-bg-inverse: var(--app-foreground);
-  --ock-bg-inverse-hover: #2a2a2a;
-  --ock-bg-inverse-active: #3a3a3a;
-  --ock-bg-primary: var(--app-accent);
-  --ock-bg-primary-hover: var(--app-accent-hover);
-  --ock-bg-primary-active: var(--app-accent-active);
-  --ock-bg-primary-washed: var(--app-accent-light);
-  --ock-bg-primary-disabled: #80a8ff;
-  --ock-bg-secondary: var(--app-gray);
-  --ock-bg-secondary-hover: var(--app-gray-dark);
-  --ock-bg-secondary-active: #d1d1d1;
-  --ock-bg-error: #fee2e2;
-  --ock-bg-warning: #fef3c7;
-  --ock-bg-success: #dcfce7;
-  --ock-bg-default-reverse: var(--app-foreground);
-
-  /* アイコン色 */
-  --ock-icon-color-primary: var(--app-accent);
-  --ock-icon-color-foreground: var(--app-foreground);
-  --ock-icon-color-foreground-muted: #71717a;
-  --ock-icon-color-inverse: var(--app-background);
-  --ock-icon-color-error: #ef4444;
-  --ock-icon-color-success: #22c55e;
-  --ock-icon-color-warning: #f59e0b;
-
-  /* 線色 */
-  --ock-line-primary: var(--app-accent);
-  --ock-line-default: var(--app-gray-dark);
-  --ock-line-heavy: #a1a1aa;
-  --ock-line-inverse: #d4d4d8;
+/* 回路基板風背景パターン */
+.cyberpunk-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(57, 255, 20, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
 }
 
-* {
-  touch-action: manipulation;
+/* サイファーパンクカード */
+.cyberpunk-card {
+  background: var(--cyberpunk-card-gradient);
+  border: var(--cyberpunk-border-neon);
+  border-radius: 12px;
+  box-shadow: var(--cyberpunk-glow-blue);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-body {
-  color: var(--app-foreground);
-  background: var(--app-background);
-  font-family: var(--font-geist-sans), sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+.cyberpunk-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cyberpunk-glow-blue), 0 10px 30px rgba(0, 255, 255, 0.3);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* ホログラム効果 */
+.cyberpunk-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+.cyberpunk-card:hover::before {
+  left: 100%;
 }
 
-.animate-fade-out {
-  animation: fadeOut 3s forwards;
+/* サイファーパンクボタン */
+.cyberpunk-button {
+  background: var(--cyberpunk-button-gradient);
+  border: none;
+  color: var(--cyberpunk-black);
+  font-family: var(--cyberpunk-font-mono);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 128, 255, 0.4);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.cyberpunk-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cyberpunk-glow-blue);
+  background: linear-gradient(45deg, var(--cyberpunk-neon-green) 0%, var(--cyberpunk-matrix-green) 100%);
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
+.cyberpunk-button:active {
+  transform: translateY(0);
+}
+
+/* グリッチエフェクト */
+.cyberpunk-glitch {
+  position: relative;
+  animation: cyberpunk-glitch 2s infinite;
+}
+
+@keyframes cyberpunk-glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+.cyberpunk-glitch::before,
+.cyberpunk-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cyberpunk-glitch::before {
+  animation: cyberpunk-glitch-1 0.5s infinite;
+  color: var(--cyberpunk-neon-pink);
+  z-index: -1;
+}
+
+.cyberpunk-glitch::after {
+  animation: cyberpunk-glitch-2 0.5s infinite;
+  color: var(--cyberpunk-neon-green);
+  z-index: -2;
+}
+
+@keyframes cyberpunk-glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes cyberpunk-glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+/* パルス効果 */
+.cyberpunk-pulse {
+  animation: cyberpunk-pulse 2s infinite;
+}
+
+@keyframes cyberpunk-pulse {
+  0%, 100% {
+    box-shadow: var(--cyberpunk-glow-blue);
   }
   50% {
-    opacity: 1;
+    box-shadow: var(--cyberpunk-glow-green);
   }
-  100% {
-    opacity: 0;
+}
+
+/* ネオンテキスト */
+.cyberpunk-text-neon {
+  color: var(--cyberpunk-neon-blue);
+  text-shadow: var(--cyberpunk-glow-blue);
+  font-family: var(--cyberpunk-font-mono);
+  font-weight: bold;
+}
+
+.cyberpunk-text-green {
+  color: var(--cyberpunk-neon-green);
+  text-shadow: var(--cyberpunk-glow-green);
+}
+
+.cyberpunk-text-pink {
+  color: var(--cyberpunk-neon-pink);
+  text-shadow: var(--cyberpunk-glow-pink);
+}
+
+.cyberpunk-text-yellow {
+  color: var(--cyberpunk-neon-yellow);
+  text-shadow: var(--cyberpunk-glow-yellow);
+}
+
+/* スキャンライン効果 */
+.cyberpunk-scanlines {
+  position: relative;
+}
+
+.cyberpunk-scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.03) 2px,
+    rgba(0, 255, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: cyberpunk-scanlines 0.1s linear infinite;
+}
+
+@keyframes cyberpunk-scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* データストリーム効果 */
+.cyberpunk-data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyberpunk-data-stream::before {
+  content: '01010101010101010101010101010101010101010101';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  color: var(--cyberpunk-matrix-green);
+  opacity: 0.1;
+  font-size: 12px;
+  line-height: 1;
+  animation: cyberpunk-data-flow 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes cyberpunk-data-flow {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .cyberpunk-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .cyberpunk-card {
+    border-radius: 8px;
+  }
+  
+  .cyberpunk-text-neon {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cyberpunk-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  .cyberpunk-text-neon {
+    font-size: 14px;
   }
 }
